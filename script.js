@@ -141,3 +141,63 @@ nextButton.addEventListener("click", () => {
 
 // Inicializa a lista de aniversariantes
 atualizarAniversariantes();
+
+
+//JS DO GRAFICO PARA MEXER NA FONT
+const cxt = document.getElementById('attendanceChart').getContext('2d');
+
+const chart = new Chart(cxt, {
+    type: 'bar',
+    data: {
+        labels: ['Domingo 1', 'Domingo 2', 'Domingo 3', 'Domingo 4', 'Domingo 5'],
+        datasets: [{
+            label: 'Total de Pessoas Presentes',
+            data: [50, 60, 55, 70, 30],
+            backgroundColor: 'rgba(60, 90, 100, 0.7)'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                ticks: {
+                    font: {
+                        size: 14  // Tamanho da fonte padrão
+                    }
+                }
+            },
+            y: {
+                ticks: {
+                    font: {
+                        size: 14  // Tamanho da fonte padrão
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        size: 14  // Tamanho da fonte da legenda
+                    }
+                }
+            }
+        }
+    }
+});
+
+/* Ajustar tamanho da fonte em telas menores */
+function ajustarFonteGrafico() {
+    let tamanhoFonte = window.innerWidth < 550 ? 10 : 14;  // Se a tela for menor que 550px, reduz a fonte para 10px
+
+    chart.options.scales.x.ticks.font.size = tamanhoFonte;
+    chart.options.scales.y.ticks.font.size = tamanhoFonte;
+    chart.options.plugins.legend.labels.font.size = tamanhoFonte;
+
+    chart.update(); // Atualiza o gráfico
+}
+
+/* Ouve o evento de redimensionamento da tela */
+window.addEventListener('resize', ajustarFonteGrafico);
+ajustarFonteGrafico();  // Executa uma vez para ajustar ao carregar
