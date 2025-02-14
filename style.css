@@ -101,7 +101,7 @@
 /* ========================== */
 
 .dashboard {
-    margin-top: 4rem;
+    margin-top: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,7 +110,6 @@
 
 .card-container {
     display: flex;
-    flex-direction: column;
     gap: 1rem;
     width: 100%;
     max-width: 95%;
@@ -122,6 +121,7 @@
     border-radius: 0.5rem;
     box-shadow: 0px 4px 6px var(--card-shadow);
     text-align: center;
+    width: 30.5%;
 }
 
 .card h3 {
@@ -134,16 +134,18 @@
 
 .chart-and-birthday-container {
     display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 95%;
     margin: 2rem auto;
-    gap: 6%;
+    align-items: center;
 }
 
 .chart-section {
     flex: 2;
-    max-width: 47%;
+    max-width: 100%;
     min-height: 400px; /* Aumenta a altura do gráfico */
+    margin-top: 3rem;
 }
 
 canvas {
@@ -157,16 +159,16 @@ canvas {
 
 .birthday-section {
     flex: 1;
-    max-width: 45%;
+    max-width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 6rem;
+    margin-top: 2.4rem;
 }
 
 .birthday-card {
     background: var(--card-bg);
-    padding: 1rem;
+    padding: 1.4rem;
     border-radius: 0.5rem;
     box-shadow: 0px 4px 6px var(--card-shadow);
     width: 100%;
@@ -302,9 +304,6 @@ canvas {
         text-align: center;
     }
 
-    .card h3{
-        font-size: 10px;
-    }
     .card{
         width: 33%;
         padding: .6rem;
@@ -312,6 +311,10 @@ canvas {
     .card-container{
         display: flex;flex-direction: row;
         gap: .4rem;
+    }
+
+    .chart-section{
+        margin-top: 1.5rem;
     }
 }
 
@@ -358,4 +361,30 @@ canvas {
     .chart-section .chartjs-size-monitor canvas {
         transform: rotate(0deg); /* Mantém os rótulos mais organizados */
     }
+}
+
+@media (max-width:1400px){
+    .dashboard{
+        margin-top: 2rem;
+    }
+
+    .card h3{
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1301px) {
+    
+    .chart-section{
+        height: 600px;
+    }
+
+    .birthday-section{
+        width:60%;
+    }
+
+    .birthday-card{
+        width: 70%;
+    }
+
 }
