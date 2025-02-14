@@ -22,19 +22,27 @@
     position: relative;
 }
 
+/* Ajuste para manter a logo à esquerda */
+.logo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
 .logo img {
     height: 3rem;
 }
 
-/* Botão de menu hamburguer */
+/* Botão do menu hamburguer */
 .menu-toggle {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--text-color);
     cursor: pointer;
     display: none; /* Oculto por padrão */
 }
+
 
 /* Estilos do menu principal */
 .nav-links {
@@ -268,18 +276,34 @@ canvas {
 
 /* Ajuste do menu hamburguer */
 @media (max-width: 600px) {
-    .menu-toggle {
-        display: block; /* Exibir o botão hamburguer */
-        position: absolute;
-        top: 50%;
-        left: 15px;
-        transform: translateY(-50%);
-        font-size: 1.8rem;
-        cursor: pointer;
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 1rem;
     }
 
+    /* Mantém o logotipo à esquerda */
+    .logo {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    /* Garante que o menu hambúrguer fique à direita */
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 15px; /* Move para o lado direito */
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.8rem;
+    }
+
+    /* Ajuste no menu para aparecer corretamente */
     .nav-links {
-        display: none; /* Esconder o menu principal */
+        display: none;
         flex-direction: column;
         background-color: var(--primary-color);
         position: absolute;
@@ -290,7 +314,7 @@ canvas {
     }
 
     .nav-links.active {
-        display: flex; /* Exibir quando ativado */
+        display: flex;
     }
 
     .nav-links li {
@@ -299,10 +323,11 @@ canvas {
     }
 
     .dropdown-menu {
-        position: relative; /* Mantém os dropdowns dentro do menu */
+        position: relative;
         width: 100%;
         text-align: center;
     }
+}
 
     .card{
         width: 33%;
@@ -316,7 +341,7 @@ canvas {
     .chart-section{
         margin-top: 1.5rem;
     }
-}
+
 
 @media (max-width: 500px) {
     .chart-and-birthday-container {
@@ -335,7 +360,7 @@ canvas {
     }
 
     canvas {
-        height: 210px !important; /* Mantém o gráfico proporcional */
+        height: 170px !important; /* Mantém o gráfico proporcional */
     }
 }
 
