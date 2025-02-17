@@ -89,6 +89,14 @@ const modais = {
     }
 };
 
+// Garante que todos os modais iniciem fechados
+window.addEventListener('DOMContentLoaded', () => {
+    Object.values(modais).forEach(({ modal }) => {
+        document.getElementById(modal).style.display = 'none';
+    });
+});
+
+// Adiciona eventos de clique para abrir e fechar os modais
 Object.values(modais).forEach(({ abrir, fechar, modal }) => {
     document.getElementById(abrir)?.addEventListener('click', function(event) {
         event.preventDefault();
@@ -105,7 +113,6 @@ Object.values(modais).forEach(({ abrir, fechar, modal }) => {
         }
     });
 });
-
 
 //JS CARD DOS ANIVERSARIANTES
 const aniversariantes = [
