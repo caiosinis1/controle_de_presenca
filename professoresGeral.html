@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professores - Geral</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="professoresGeral.css"> <!-- Estilo específico desta página -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="src/img/logoIPB-fundoPNG.png" alt="Logotipo da Igreja">
+        </div>
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a href="#" id="turmas-btn">Turmas ▼</a>
+                <ul class="dropdown-menu" id="turmas-dropdown">
+                    <li><a href="#" id="abrir-modal-cadastro-turma">Cadastrar</a></li>
+                    <li><a href="turmasGeral.html">Geral</a></li>
+                    <li><a href="chamada.html">Chamada</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" id="alunos-btn">Alunos ▼</a>
+                <ul class="dropdown-menu" id="alunos-dropdown">
+                    <li><a href="#" id="abrir-modal-cadastro-aluno">Cadastrar</a></li>
+                    <li><a href="alunosGeral.html">Geral</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" id="professores-btn">Professores ▼</a>
+                <ul class="dropdown-menu" id="professores-dropdown">
+                    <li><a href="#" id="abrir-modal-cadastro-professor">Cadastrar</a></li>
+                    <li><a href="professoresGeral.html">Geral</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="professores-container">
+        <section class="professores-listagem">
+            <table class="professores-tabela">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Turmas</th>
+                        <th>Aniversário</th>
+                        <th>Matrícula</th>
+                    </tr>
+                </thead>
+                <tbody id="professores-tabela-body">
+                    <!-- Dados preenchidos dinamicamente -->
+                </tbody>
+            </table>
+        </section>
+
+        <section class="professores-formulario">
+            <div class="professores-card">
+                <div class="professores-header">
+                    <h2 id="professores-titulo-form">Editar Professor</h2>
+                </div>
+
+                <!-- Campo de pesquisa -->
+                <div class="professores-form-group professores-pesquisa-container">
+                    <label for="professor-pesquisa">Pesquisar Professor:</label>
+                    <input type="text" id="professor-pesquisa" class="professores-pesquisa" placeholder="Digite um nome...">
+                    <ul class="professores-sugestoes" id="professores-sugestoes">
+                        <!-- Sugestões preenchidas via JavaScript -->
+                    </ul>
+                </div>
+
+                <form id="professores-form">
+                    <div class="professores-form-group">
+                        <label for="professores-nome">Nome Completo:</label>
+                        <input type="text" id="professores-nome" name="professores-nome" required>
+                    </div>
+                    <div class="professores-form-group">
+                        <label for="professores-aniversario">Data de Nascimento:</label>
+                        <input type="date" id="professores-aniversario" name="professores-aniversario" required>
+                    </div>
+                    <h3>Turmas:</h3>
+                    <div class="professores-turmas-lista" id="professores-turmas">
+                        <label><input type="checkbox" name="professores-turma" value="Turma 1"> Turma 1</label>
+                        <label><input type="checkbox" name="professores-turma" value="Turma 2"> Turma 2</label>
+                        <label><input type="checkbox" name="professores-turma" value="Turma 3"> Turma 3</label>
+                    </div>
+                    <button class="professores-submit" type="submit" id="professores-submit-button">Concluir</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL DE CADASTRO DE PROFESSOR -->
+    <div id="modal-cadastro-professor" class="modal-cadastro">
+        <div id="modal-cadastro-content-professor" class="modal-cadastro-content">
+            <div class="modal-cadastro-header">
+                <h2>Cadastrar Novo Professor</h2>
+                <span class="modal-cadastro-close" id="fechar-modal-cadastro-professor">&times;</span>
+            </div>
+            <form id="form-cadastro-professor">
+                <div class="form-row">
+                    <div class="form-group-nome-completo">
+                        <label for="nome-professor">Nome Completo:</label>
+                        <input type="text" id="nome-professor" name="nome-professor" required>
+                    </div>
+                    <div class="form-group-nascimento">
+                        <label for="data-nascimento-professor">Data de Nascimento:</label>
+                        <input type="date" id="data-nascimento-professor" name="data-nascimento-professor" required>
+                    </div>
+                </div>
+                <h3>Turmas:</h3>
+                <div class="modal-cadastro-opcoes" id="turmas-professor">
+                    <label><input type="checkbox" name="turma-professor" value="Turma 1"> Turma 1</label>
+                    <label><input type="checkbox" name="turma-professor" value="Turma 2"> Turma 2</label>
+                </div>
+                <button class="button-submit" type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // JS para autocomplete da pesquisa de professores
+        const professores = ["Carlos Souza", "Ana Lima", "Fernanda Oliveira", "Gabriel Santos"];
+        const inputPesquisa = document.getElementById("professor-pesquisa");
+        const listaSugestoes = document.getElementById("professores-sugestoes");
+
+        inputPesquisa.addEventListener("input", function() {
+            const valor = this.value.toLowerCase();
+            listaSugestoes.innerHTML = "";
+
+            if (valor.length > 0) {
+                const sugestoes = professores.filter(nome => nome.toLowerCase().includes(valor));
+                
+                sugestoes.forEach(nome => {
+                    const item = document.createElement("li");
+                    item.textContent = nome;
+                    item.addEventListener("click", function() {
+                        inputPesquisa.value = nome;
+                        listaSugestoes.innerHTML = "";
+                    });
+                    listaSugestoes.appendChild(item);
+                });
+
+                listaSugestoes.style.display = "block";
+            } else {
+                listaSugestoes.style.display = "none";
+            }
+        });
+
+        document.addEventListener("click", function(event) {
+            if (!listaSugestoes.contains(event.target) && event.target !== inputPesquisa) {
+                listaSugestoes.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
