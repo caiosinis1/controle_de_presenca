@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turmas - Geral</title>
-    <link rel="stylesheet" href="style.css"> <!-- Mantendo a navbar -->
-    <link rel="stylesheet" href="turmasGeral.css">
+    <title>Chamada da Turma</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="chamada.css"> <!-- CSS exclusivo da chamada -->
     <script src="script.js" defer></script>
 </head>
 <body>
+
+    <!-- Navbar existente -->
     <nav class="navbar">
         <div class="logo">
             <img src="src/img/logoIPB-fundoPNG.png" alt="Logotipo da Igreja">
@@ -41,64 +43,29 @@
         </ul>
     </nav>
 
-    <main class="turmas-container">
-        <section class="turmas-listagem">
-            <table class="turmas-tabela">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Professores</th>
-                        <th>Faixa Etária</th>
-                    </tr>
-                </thead>
-                <tbody id="turmas-tabela-body">
-                    <!-- Dados preenchidos dinamicamente -->
-                </tbody>
-            </table>
-        </section>
+    <!-- Container Principal -->
+    <main class="chamada-container">
+        <div class="chamada-card">
+            <h2>Registrar Presença</h2>
 
-        <section class="turmas-formulario">
-            <div class="turmas-card">
-                <div class="turmas-header">
-                    <h2 id="turmas-titulo-form">Editar Turma</h2>
-                </div>
+            <label for="turma-selecionada">Selecionar Turma:</label>
+            <select id="turma-selecionada">
+                <option value="">Selecione uma turma</option>
+                <option value="turma1">Turma 1</option>
+                <option value="turma2">Turma 2</option>
+                <option value="turma3">Turma 3</option>
+            </select>
 
-                 <!-- Select para Escolher a Turma -->
-                <div class="turmas-form-group">
-                    <label for="turma-selecionada">Selecionar Turma:</label>
-                    <select id="turma-selecionada" class="turmas-select">
-                        <option value="">Selecione uma turma</option>
-                        <option value="turma1">Turma 1</option>
-                        <option value="turma2">Turma 2</option>
-                        <option value="turma3">Turma 3</option>
-                        <!-- As opções serão carregadas dinamicamente via JS -->
-                    </select>
-                </div>
-                <form id="turmas-form">
-                    <div class="turmas-form-group">
-                        <label for="turmas-nome">Nome da Turma:</label>
-                        <input type="text" id="turmas-nome" name="turmas-nome" required>
-                    </div>
-                    <div class="turmas-faixa-etaria">
-                        <label for="turmas-faixa-de">Faixa Etária:</label>
-                        <div class="turmas-faixa-container">
-                            <input type="number" id="turmas-faixa-de" name="turmas-faixa-de" placeholder="De" required>
-                            <input type="number" id="turmas-faixa-ate" name="turmas-faixa-ate" placeholder="Até" required>
-                        </div>
-                    </div>
-                    <h3>Professores Responsáveis:</h3>
-                    <div class="turmas-professores-lista" id="turmas-professores">
-                        <label><input type="checkbox" name="turmas-professor" value="Professor 1"> Professor 1</label>
-                        <label><input type="checkbox" name="turmas-professor" value="Professor 2"> Professor 2</label>
-                        <label><input type="checkbox" name="turmas-professor" value="Professor 3"> Professor 3</label>
-                    </div>
-                    <button class="turmas-submit" type="submit" id="turmas-submit-button">Concluir</button>
-                </form>
+            <h3>Lista de Alunos</h3>
+            <div id="lista-alunos-chamada">
+                <p>Selecione uma turma para exibir os alunos.</p>
             </div>
-        </section>
+
+            <button id="salvar-presenca-chamada" class="botao-chamada">Salvar Presença</button>
+        </div>
     </main>
 
-    <!--MODAIS-->
+     <!--MODAIS-->
      <!-- Modal de Cadastro de Turma -->
      <div id="modal-cadastro-turma" class="modal-cadastro">
         <div id="modal-cadastro-content-aluno" class="modal-cadastro-content">
@@ -187,5 +154,7 @@
             </form>
         </div>
     </div>
+
+    <script src="chamada.js"></script> <!-- Script para funcionalidade -->
 </body>
 </html>

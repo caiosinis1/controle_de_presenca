@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos - Geral</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="alunosGeral.css">
+    <script src="alunosGeral.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="src/img/logoIPB-fundoPNG.png" alt="Logotipo da Igreja">
+        </div>
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a href="#" id="turmas-btn">Turmas ▼</a>
+                <ul class="dropdown-menu" id="turmas-dropdown">
+                    <li><a href="#" id="abrir-modal-cadastro-turma">Cadastrar</a></li>
+                    <li><a href="turmasGeral.html">Geral</a></li>
+                    <li><a href="chamada.html">Chamada</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" id="alunos-btn">Alunos ▼</a>
+                <ul class="dropdown-menu" id="alunos-dropdown">
+                    <li><a href="#" id="abrir-modal-cadastro-aluno">Cadastrar</a></li>
+                    <li><a href="alunosGeral.html">Geral</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" id="professores-btn">Professores ▼</a>
+                <ul class="dropdown-menu" id="professores-dropdown">
+                    <li><a href="#" id="abrir-modal-cadastro-professor">Cadastrar</a></li>
+                    <li><a href="professoresGeral.html">Geral</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="alunos-container">
+        <section class="alunos-listagem">
+            <table class="alunos-tabela">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Turma</th>
+                        <th>Aniversário</th>
+                        <th>Matrícula</th>
+                    </tr>
+                </thead>
+                <tbody id="alunos-tabela-body">
+                    <!-- Dados preenchidos dinamicamente -->
+                </tbody>
+            </table>
+        </section>
+
+        <section class="alunos-formulario">
+            <div class="alunos-card">
+                <div class="alunos-header">
+                    <h2 id="alunos-titulo-form">Editar Aluno</h2>
+                </div>
+
+                <!-- Campo de Pesquisa para Escolher o Aluno -->
+                <div class="alunos-form-group">
+                    <label for="aluno-pesquisa">Buscar Aluno:</label>
+                    <input type="text" id="aluno-pesquisa" class="alunos-input" placeholder="Digite o nome...">
+                    <ul id="aluno-sugestoes" class="alunos-sugestoes"></ul>
+                </div>
+
+                <form id="alunos-form">
+                    <div class="alunos-form-group">
+                        <label for="alunos-nome">Nome do Aluno:</label>
+                        <input type="text" id="alunos-nome" name="alunos-nome" required>
+                    </div>
+                    <div class="alunos-form-group">
+                        <label for="alunos-data-nascimento">Data de Nascimento:</label>
+                        <input type="date" id="alunos-data-nascimento" name="alunos-data-nascimento" required>
+                    </div>
+                    <div class="alunos-form-group">
+                        <label for="alunos-turma">Turma:</label>
+                        <select id="alunos-turma">
+                            <option value="">Selecione uma turma</option>
+                            <option value="turma1">Turma 1</option>
+                            <option value="turma2">Turma 2</option>
+                        </select>
+                    </div>
+                    <button class="alunos-submit" type="submit">Concluir</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

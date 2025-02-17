@@ -164,6 +164,40 @@
     background: #145214;
 }
 
+/* ========================== */
+/*          SELECT            */
+/* ==========================*/
+.turmas-select {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+.turmas-select:hover {
+    border: 1px solid #19381b;
+}
+
+.turmas-select:focus {
+    border: 1px solid #145214;
+    box-shadow: 0 0 5px rgba(20, 82, 20, 0.3);
+}
+
+/* Ícone da seta do select */
+.turmas-select::-ms-expand {
+    display: none; /* Remove a seta padrão do select no IE */
+}
+
+.turmas-select option {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
 
 /* ========================== */
 /*      RESPONSIVIDADE        */
@@ -199,44 +233,43 @@
         flex-direction: column;
     }
 
-    .turmas-submit {
-        font-size: 0.9rem;
+    .turmas-submit button{
+        font-size: 0.5rem;
     }
 
     .turmas-tabela th, .turmas-tabela td {
-        font-size: 0.6rem;
+        font-size: 0.7rem;
+    }
+
+    .turmas-tabela tbody td {
+        font-size: 0.6rem; /* Fonte menor para melhor ajuste no mobile */
+    }
+
+    .turmas-formulario h2{
+        font-size: 1.2rem;
+    }
+
+    .turmas-formulario h3{
+        font-size: 0.9rem;
+    }
+
+    .turmas-formulario label{
+        font-size: 0.9rem;
+    }
+
+    .turmas-formulario input{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .turmas-select{
+        padding: 5px;
     }
 }
 
 
-.turmas-select {
-    width: 100%;
-    padding: 0.6rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    font-size: 1rem;
-    color: #333;
-    cursor: pointer;
-    outline: none;
-    transition: border 0.3s ease-in-out;
-}
-
-.turmas-select:hover {
-    border: 1px solid #19381b;
-}
-
-.turmas-select:focus {
-    border: 1px solid #145214;
-    box-shadow: 0 0 5px rgba(20, 82, 20, 0.3);
-}
-
-/* Ícone da seta do select */
-.turmas-select::-ms-expand {
-    display: none; /* Remove a seta padrão do select no IE */
-}
-
-.turmas-select option {
-    padding: 0.5rem;
-    font-size: 1rem;
+@media (min-width: 768px){
+    .turmas-container{
+        margin-top: 3.4rem;
+    }
 }
