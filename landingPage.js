@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
             };
         
             if (username === userDB.username && password === userDB.password) {
-                alert("Login realizado com sucesso!");
                 window.location.href = "home.html"; // Redireciona para a página inicial
             } else {
                 alert("Usuário ou senha incorretos.");
