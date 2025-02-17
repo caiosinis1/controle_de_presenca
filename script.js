@@ -38,16 +38,36 @@ document.querySelectorAll('.dropdown > a').forEach(dropdown => {
     dropdown.addEventListener('click', function(event) {
         event.preventDefault();
         const menu = this.nextElementSibling;
-        menu.classList.toggle('show');
+
+        if (menu.classList.contains('show')) {
+            menu.classList.remove('show');
+        } else {
+            document.querySelectorAll('.dropdown-menu').forEach(otherMenu => {
+                otherMenu.classList.remove('show');
+            });
+
+            menu.classList.add('show'); 
+        }
     });
 });
 
+// Fecha o dropdown se clicar fora
 window.addEventListener('click', function(event) {
-    document.querySelectorAll('.dropdown-menu').forEach(menu => {
-        if (!menu.parentElement.contains(event.target)) {
+    if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
             menu.classList.remove('show');
-        }
-    });
+        });
+    }
+});
+
+
+// Fecha o dropdown se clicar fora
+window.addEventListener('click', function(event) {
+    if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            menu.classList.remove('show');
+        });
+    }
 });
 
 // JS DOS MODAIS DE CADASTRO
