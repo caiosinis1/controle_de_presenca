@@ -11,6 +11,10 @@
     font-family: Poppins;
 }
 
+body{
+    background-color: rgba(239, 239, 239, 0.612);
+}
+
 /* ========================== */
 /*         ESTILO NAVBAR      */
 /* ========================== */

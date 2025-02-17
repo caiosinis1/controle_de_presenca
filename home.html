@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chamada da Turma</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="chamada.css"> <!-- CSS exclusivo da chamada -->
+    <title>Controle de Presença</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
-
-    <!-- Navbar existente -->
     <nav class="navbar">
         <div class="logo">
             <img src="src/img/logoIPB-fundoPNG.png" alt="Logotipo da Igreja">
         </div>
         <button class="menu-toggle" id="menu-toggle">☰</button>
         <ul class="nav-links" id="nav-links">
-            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li class="dropdown">
                 <a href="#" id="turmas-btn">Turmas ▼</a>
                 <ul class="dropdown-menu" id="turmas-dropdown">
@@ -43,31 +41,59 @@
         </ul>
     </nav>
 
-    <!-- Container Principal -->
-    <main class="chamada-container">
-        <div class="chamada-card">
-            <h2>Registrar Presença</h2>
-
-            <label for="turma-selecionada">Selecionar Turma:</label>
-            <select id="turma-selecionada">
-                <option value="">Selecione uma turma</option>
-                <option value="turma1">Turma 1</option>
-                <option value="turma2">Turma 2</option>
-                <option value="turma3">Turma 3</option>
-            </select>
-
-            <h3>Lista de Alunos</h3>
-            <div id="lista-alunos-chamada">
-                <p>Selecione uma turma para exibir os alunos.</p>
+    <main class="dashboard">
+        <div class="card-container">
+            <div class="card">
+                <h3>Total Professores</h3>
+                <p id="total-professores">0</p>
             </div>
-
-            <button id="salvar-presenca-chamada" class="botao-chamada">Salvar Presença</button>
+            <div class="card">
+                <h3>Total Alunos</h3>
+                <p id="total-alunos">0</p>
+            </div>
+            <div class="card">
+                <h3>Total Turmas</h3>
+                <p id="total-turmas">0</p>
+            </div>
         </div>
+        <div class="chart-and-birthday-container">
+            <div class="chart-section">
+                <label id="month-select-label" for="month-select">Selecione o mês:</label>
+                <select id="month-select">
+                    <option value="janeiro">Janeiro</option>
+                    <option value="fevereiro">Fevereiro</option>
+                    <option value="marco">Março</option>
+                    <option value="abril">Abril</option>
+                    <option value="maio">Maio</option>
+                    <option value="junho">Junho</option>
+                    <option value="julho">Julho</option>
+                    <option value="agosto">Agosto</option>
+                    <option value="setembro">Setembro</option>
+                    <option value="outubro">Outubro</option>
+                    <option value="novembro">Novembro</option>
+                    <option value="dezembro">Dezembro</option>
+                </select>
+                <canvas id="attendanceChart"></canvas>
+            </div>
+        
+            <div class="birthday-section">
+                <div class="birthday-card">
+                    <h3>Aniversariantes do Mês</h3>
+                    <div id="birthday-list">
+                        <p>Nenhum aniversariante</p>
+                    </div>
+                    <div class="birthday-navigation">
+                        <button id="prev-birthday" disabled>◀</button>
+                        <button id="next-birthday" disabled>▶</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </main>
 
-     <!--MODAIS-->
-     <!-- Modal de Cadastro de Turma -->
-     <div id="modal-cadastro-turma" class="modal-cadastro">
+    <!-- Modal de Cadastro de Turma -->
+    <div id="modal-cadastro-turma" class="modal-cadastro">
         <div id="modal-cadastro-content-aluno" class="modal-cadastro-content">
             <div class="modal-cadastro-header">
                 <h2>Cadastrar Nova Turma</h2>
@@ -154,7 +180,5 @@
             </form>
         </div>
     </div>
-
-    <script src="chamada.js"></script> <!-- Script para funcionalidade -->
 </body>
 </html>
