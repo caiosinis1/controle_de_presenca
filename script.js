@@ -228,3 +228,4 @@ function ajustarFonteGrafico() {
 /* Ouve o evento de redimensionamento da tela */
 window.addEventListener('resize', ajustarFonteGrafico);
 ajustarFonteGrafico();  // Executa uma vez para ajustar ao carregar
+

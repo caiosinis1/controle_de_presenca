@@ -94,68 +94,96 @@
         </section>
     </main>
 
-    <!-- MODAL DE CADASTRO DE PROFESSOR -->
-    <div id="modal-cadastro-professor" class="modal-cadastro">
-        <div id="modal-cadastro-content-professor" class="modal-cadastro-content">
+    <!--MODAIS-->
+     <!-- Modal de Cadastro de Turma -->
+     <div id="modal-cadastro-turma" class="modal-cadastro">
+        <div id="modal-cadastro-content-aluno" class="modal-cadastro-content">
             <div class="modal-cadastro-header">
-                <h2>Cadastrar Novo Professor</h2>
-                <span class="modal-cadastro-close" id="fechar-modal-cadastro-professor">&times;</span>
+                <h2>Cadastrar Nova Turma</h2>
+                <span class="modal-cadastro-close" id="fechar-modal-cadastro-turma">&times;</span>
             </div>
-            <form id="form-cadastro-professor">
+            <form id="form-cadastro-turma">
                 <div class="form-row">
-                    <div class="form-group-nome-completo">
-                        <label for="nome-professor">Nome Completo:</label>
-                        <input type="text" id="nome-professor" name="nome-professor" required>
+                    <div class="form-group-nome-turma">
+                        <label for="nome-turma">Nome da Turma:</label>
+                        <input type="text" id="nome-turma" name="nome-turma" required>
                     </div>
-                    <div class="form-group-nascimento">
-                        <label for="data-nascimento-professor">Data de Nascimento:</label>
-                        <input type="date" id="data-nascimento-professor" name="data-nascimento-professor" required>
+                    <div class="form-group faixa-etaria">
+                        <label for="faixa-etaria-de">Faixa Etária:</label>
+                        <div class="inputs-faixa-etaria-container">
+                            <input type="number" id="faixa-etaria-de" name="faixa-etaria-de" placeholder="De" required>
+                            <input type="number" id="faixa-etaria-ate" name="faixa-etaria-ate" placeholder="Até" required>
+                        </div>
                     </div>
                 </div>
-                <h3>Turmas:</h3>
-                <div class="modal-cadastro-opcoes" id="turmas-professor">
-                    <label><input type="checkbox" name="turma-professor" value="Turma 1"> Turma 1</label>
-                    <label><input type="checkbox" name="turma-professor" value="Turma 2"> Turma 2</label>
+                <h3>Professores Responsáveis:</h3>
+                <div class="modal-cadastro-opcoes" id="lista-professores">
+                    <label><input type="checkbox" name="professor" value="Professor 1"> Professor 1</label>
+                    <label><input type="checkbox" name="professor" value="Professor 2"> Professor 2</label>
+                    <label><input type="checkbox" name="professor" value="Professor 3"> Professor 3</label>
                 </div>
                 <button class="button-submit" type="submit">Cadastrar</button>
             </form>
         </div>
     </div>
 
-    <script>
-        // JS para autocomplete da pesquisa de professores
-        const professores = ["Carlos Souza", "Ana Lima", "Fernanda Oliveira", "Gabriel Santos"];
-        const inputPesquisa = document.getElementById("professor-pesquisa");
-        const listaSugestoes = document.getElementById("professores-sugestoes");
+   <!-- Modal de Cadastro de Professor -->
+   <div id="modal-cadastro-professor" class="modal-cadastro">
+    <div id="modal-cadastro-content-professor" class="modal-cadastro-content">
+        <div class="modal-cadastro-header">
+            <h2>Cadastrar Novo Professor</h2>
+            <span class="modal-cadastro-close" id="fechar-modal-cadastro-professor">&times;</span>
+        </div>
+        <form id="form-cadastro-professor">
+            <div class="form-row">
+                <div class="form-group-nome-completo">
+                    <label for="nome-professor">Nome Completo:</label>
+                    <input type="text" id="nome-professor" name="nome-professor" required>
+                </div>
+                <div class="form-group-nascimento">
+                    <label for="data-nascimento-professor">Data de Nascimento:</label>
+                    <input type="date" id="data-nascimento-professor" name="data-nascimento-professor" required>
+                </div>
+            </div>
+            <h3>Turmas:</h3>
+            <div class="modal-cadastro-opcoes" id="turmas-professor">
+                <label><input type="checkbox" name="turma-professor" value="Turma 1"> Turma 1</label>
+                <label><input type="checkbox" name="turma-professor" value="Turma 2"> Turma 2</label>
+            </div>
+            <button class="button-submit" type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>
 
-        inputPesquisa.addEventListener("input", function() {
-            const valor = this.value.toLowerCase();
-            listaSugestoes.innerHTML = "";
+    <!-- Modal de Cadastro de Aluno -->
+    <div id="modal-cadastro-aluno" class="modal-cadastro">
+        <div class="modal-cadastro-content">
+            <div class="modal-cadastro-header">
+                <h2>Cadastrar Novo Aluno</h2>
+                <span class="modal-cadastro-close" id="fechar-modal-cadastro-aluno">&times;</span>
+            </div>
+            <form id="form-cadastro-aluno">
+                <div class="form-row">
+                    <div class="form-group-nome-completo">
+                        <label for="nome-aluno">Nome Completo:</label>
+                        <input type="text" id="nome-aluno" name="nome-aluno" required>
+                    </div>
+                    <div class="form-group-nascimento">
+                        <label for="data-nascimento-aluno">Data de Nascimento:</label>
+                        <input type="date" id="data-nascimento-aluno" name="data-nascimento-aluno" required>
+                    </div>
+                </div>
+                <h3>Turma:</h3>
+                <div class="modal-cadastro-opcoes" id="turmas-aluno">
+                    <label><input type="radio" name="turma" value="Turma 1"> Turma 1</label>
+                    <label><input type="radio" name="turma" value="Turma 2"> Turma 2</label>
+                    <label><input type="radio" name="turma" value="Turma 3"> Turma 3</label>
+                </div>
+                <button class="button-submit" type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
 
-            if (valor.length > 0) {
-                const sugestoes = professores.filter(nome => nome.toLowerCase().includes(valor));
-                
-                sugestoes.forEach(nome => {
-                    const item = document.createElement("li");
-                    item.textContent = nome;
-                    item.addEventListener("click", function() {
-                        inputPesquisa.value = nome;
-                        listaSugestoes.innerHTML = "";
-                    });
-                    listaSugestoes.appendChild(item);
-                });
-
-                listaSugestoes.style.display = "block";
-            } else {
-                listaSugestoes.style.display = "none";
-            }
-        });
-
-        document.addEventListener("click", function(event) {
-            if (!listaSugestoes.contains(event.target) && event.target !== inputPesquisa) {
-                listaSugestoes.style.display = "none";
-            }
-        });
-    </script>
+    <script src="professoresGeral.js"></script>
 </body>
 </html>
