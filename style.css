@@ -26,6 +26,7 @@ body{
     background-color: var(--primary-color);
     padding: 1rem;
     position: relative;
+    z-index: 1000;
 }
 
 /* Ajuste para manter a logo à esquerda */

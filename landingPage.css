@@ -31,6 +31,7 @@ body{
     color: #d8d8d8;
     font-weight: bold;
     margin-top: 1.4rem;
+    text-align: center;
 }
 
 .button {
@@ -47,7 +48,6 @@ body{
     background-color: #19381b; 
     border: 1px solid rgb(53, 53, 53);
     margin-top: 1.4rem;
-
 }
 
 .button::after {
@@ -89,7 +89,7 @@ body{
 /* ========================== */
 
 .modal {
-    display: none; 
+    display: none; /* Mantém o modal oculto até ser acionado pelo JavaScript */
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -97,7 +97,6 @@ body{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -110,6 +109,7 @@ body{
     max-width: 400px;
     text-align: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
 }
 
 .close-modal {
@@ -149,8 +149,8 @@ body{
     }
 
     .text{
-        width: 80%;
-        font-size: 0.7rem;
+        width: 81%;
+        font-size: 0.6rem;
     }
 
     .button{
@@ -177,4 +177,21 @@ body{
         padding-bottom: 5px;
     }
 
+}
+
+/* Loader dentro do botão */
+.loader {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
